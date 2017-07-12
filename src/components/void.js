@@ -36,6 +36,7 @@ class Void extends React.Component {
     editor: Types.object.isRequired,
     node: Types.object.isRequired,
     parent: Types.object.isRequired,
+    readOnly: Types.bool.isRequired,
     schema: Types.object.isRequired,
     state: Types.object.isRequired,
   }
@@ -72,6 +73,8 @@ class Void extends React.Component {
    */
 
   onClick = (event) => {
+    if (this.props.readOnly) return
+
     this.debug('onClick', { event })
 
     const { node, editor } = this.props

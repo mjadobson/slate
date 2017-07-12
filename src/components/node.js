@@ -212,6 +212,12 @@ class Node extends React.Component {
 
   onDragStart = (e) => {
     const { node } = this.props
+
+    // Only void node are draggable
+    if (!node.isVoid) {
+      return
+    }
+
     const encoded = Base64.serializeNode(node, { preserveKeys: true })
     const { dataTransfer } = e.nativeEvent
 
